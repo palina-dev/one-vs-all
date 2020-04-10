@@ -33,28 +33,29 @@ function Controller() {
   };
 
   self.setEventTarget = function() {
-    if (this.event.target === myControllerContainer.querySelector('#start')) {
+    const {id} = this.event.target;
+    if (id === 'start') {
       myModel.startGame();
       window.addEventListener('keydown', self.keyDown);
       window.addEventListener('keyup', self.keyUp);
     }
-    if (this.event.target === myControllerContainer.querySelector('#pause')) {
+    if (id === 'pause') {
       myModel.pauseGame();
       window.removeEventListener('keydown', self.keyDown);
       window.removeEventListener('keyup', self.keyUp);
     }
-    if (this.event.target === myControllerContainer.querySelector('#resume')) {
+    if (id === 'resume') {
       myModel.gameReturn();
       window.addEventListener('keydown', self.keyDown);
       window.addEventListener('keyup', self.keyUp);
     }
-    if (this.event.target === myControllerContainer.querySelector('#canvas')) {
+    if (id === 'canvas') {
       self.shot();
     }
-    if(this.event.target === myControllerContainer.querySelector('#save')) {
+    if(id === 'save') {
       self.saveData();
     }
-    if (this.event.target === myControllerContainer.querySelector('#close')) {
+    if (id === 'close') {
       self.closeModal();
     }
   };
